@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>💕 Untuk Astrid 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Quicksand',sans-serif}
+
+.page{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;opacity:0;visibility:hidden;
+  transition:opacity 1s ease, visibility 1s ease;
+  pointer-events:none;z-index:1;
+}
+.page.active{opacity:1;visibility:visible;pointer-events:auto;z-index:5}
+
+/* ============ PAGE 1 LOADING ============ */
+#page1{
+  background:linear-gradient(135deg,#fce4ec,#f8bbd0,#f48fb1,#f8bbd0,#fce4ec);
+  background-size:400% 400%;animation:bgMove 5s ease infinite;
+}
+@keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.flower-spinner{width:170px;height:170px;position:relative;animation:spinFlower 10s linear infinite}
+@keyframes spinFlower{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+.load-label{font-family:'Dancing Script',cursive;font-size:22px;color:#880e4f;margin-top:35px;text-align:center}
+.load-bar-bg{width:240px;height:7px;background:rgba(136,14,79,.2);border-radius:4px;margin-top:18px;overflow:hidden}
+.load-bar-fill{width:0%;height:100%;background:linear-gradient(90deg,#c2185b,#ff80ab);border-radius:4px;transition:width .12s}
+.load-pct{font-size:14px;color:#880e4f;margin-top:8px}
+
+/* ============ PAGE 2 FLOWER BLOOM ============ */
+#page2{background:linear-gradient(135deg,#fce4ec,#f8bbd0);overflow:hidden}
+.flower-stage{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden}
+.real-flower{
+  position:absolute;
+  transform-origin:center center;
+  opacity:0;
+  animation-fill-mode:forwards;
+}
+.real-flower svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 8px rgba(136,14,79,.25))}
+
+@keyframes flowerBloom{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(0) rotate(var(--rot,0deg))}
+  60%{opacity:1;transform:translate(-50%,-50%) scale(1.1) rotate(var(--rot,0deg))}
+  100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(var(--rot,0deg))}
+}
+@keyframes flowerPulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1) rotate(var(--rot,0deg))}
+  50%{transform:translate(-50%,-50%) scale(1.08) rotate(calc(var(--rot,0deg) + 5deg))}
+}
+@keyframes flowerScatter{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(var(--rot,0deg))}
+  100%{opacity:0;transform:translate(calc(-50% + var(--sx,0px)),calc(-50% + var(--sy,0px))) scale(0.3) rotate(calc(var(--rot,0deg) + 720deg))}
+}
+
+/* ============ PAGE 3 HEART ============ */
+#page3{background:radial-gradient(ellipse at center,#1a1a2e 0%,#0d0d1a 100%)}
+#page3 canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
+.name-center{
+  position:relative;z-index:50;
+  font-family:'Great Vibes',cursive;font-size:clamp(40px,10vw,64px);
+  color:#fff;cursor:pointer;
+  text-shadow:0 0 40px rgba(150,200,255,.7),0 0 80px rgba(150,200,255,.3);
+  animation:nameGlow 3s ease-in-out infinite;padding:20px 40px;
+}
+@keyframes nameGlow{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06);text-shadow:0 0 60px rgba(150,200,255,1),0 0 120px rgba(150,200,255,.5)}
+}
+.hint{position:absolute;bottom:12%;left:0;width:100%;text-align:center;font-size:12px;color:rgba(150,200,255,.45);animation:hintBlink 2s ease-in-out infinite;z-index:20}
+@keyframes hintBlink{0%,100%{opacity:.3}50%{opacity:1}}
+.flash{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;opacity:0;pointer-events:none;z-index:9999;transition:opacity .25s}
+.flash.on{opacity:1}
+
+/* ============ PAGE 4 PERTUNJUKAN ============ */
+#page4{background:repeating-linear-gradient(90deg,#3a1a28 0px,#3a1a28 20px,#4a2535 20px,#4a2535 24px)}
+.card-ticket{
+  background:linear-gradient(145deg,rgba(35,15,25,.92),rgba(25,10,18,.96));
+  border:1.5px solid rgba(255,182,193,.25);
+  border-radius:22px;padding:40px 28px 30px;text-align:center;
+  max-width:330px;width:82%;position:relative;z-index:50;
+  box-shadow:0 0 50px rgba(255,105,180,.08);
+}
+.tk-label{font-size:11px;letter-spacing:4px;color:#f48fb1;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+.tk-title{font-family:'Dancing Script',cursive;font-size:clamp(30px,7.5vw,46px);color:#fff;line-height:1.25;margin-bottom:10px}
+.tk-sub{font-size:14px;color:#f48fb1;margin-bottom:28px}
+.btn-gold{
+  display:inline-block;
+  background:linear-gradient(135deg,#f5d08a,#d4a337,#f5d08a);
+  background-size:200% 200%;animation:goldShine 3s ease infinite;
+  border:none;border-radius:25px;padding:11px 30px;
+  font-family:'Quicksand',sans-serif;font-weight:700;font-size:13px;
+  color:#3e2723;cursor:pointer;
+  box-shadow:0 5px 20px rgba(212,163,55,.45);
+  transition:transform .2s;position:relative;z-index:50;
+  margin-bottom:10px;
+}
+@keyframes goldShine{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.btn-gold:active{transform:scale(.95)}
+.tk-hint{font-size:11px;color:rgba(255,182,193,.4);margin-top:12px;font-style:italic}
+
+.curtain{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;display:none}
+.curtain.show{display:flex}
+.curtain-l,.curtain-r{width:50%;height:100%;transition:transform 1.3s cubic-bezier(.77,0,.175,1)}
+.curtain-l{background:linear-gradient(90deg,#6a0032,#880e4f,#a11450);transform:translateX(0)}
+.curtain-r{background:linear-gradient(90deg,#a11450,#880e4f,#6a0032);transform:translateX(0)}
+.curtain.open .curtain-l{transform:translateX(-100%)}
+.curtain.open .curtain-r{transform:translateX(100%)}
+.curtain-folds{position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(90deg,transparent 0px,transparent 35px,rgba(0,0,0,.12) 35px,rgba(0,0,0,.12) 37px)}
+
+/* ============ STAGE PAGES ============ */
+.bg-stage{background:linear-gradient(180deg,#0a0a18 0%,#151528 35%,#2a1a1a 72%,#3e2723 100%)}
+.bg-stage canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.spot{position:absolute;top:0;left:50%;transform:translateX(-50%);width:0;height:0;border-left:42vw solid transparent;border-right:42vw solid transparent;border-top:55vh solid rgba(255,250,230,.04);pointer-events:none;z-index:2}
+.lights-row{position:absolute;top:0;left:0;width:100%;display:flex;justify-content:space-around;padding:8px 4px;z-index:3;pointer-events:none}
+.light-dot{width:7px;height:7px;background:#ffd54f;border-radius:50%;box-shadow:0 0 8px #ffd54f,0 0 18px rgba(255,213,79,.4);animation:ldFlicker 2s ease-in-out infinite alternate}
+@keyframes ldFlicker{0%{opacity:.4}100%{opacity:1;box-shadow:0 0 12px #ffd54f,0 0 28px rgba(255,213,79,.5)}}
+.stage-floor{position:absolute;bottom:0;left:0;width:100%;height:14%;background:linear-gradient(180deg,transparent,rgba(62,39,35,.85));z-index:2;pointer-events:none}
+
+.p5-label{font-size:11px;letter-spacing:4.5px;color:#f48fb1;text-transform:uppercase;z-index:10;font-weight:600;position:relative}
+.p5-name{font-family:'Great Vibes',cursive;font-size:clamp(44px,11vw,68px);color:#fff;text-shadow:0 0 30px rgba(255,182,193,.4);margin:4px 0 18px;z-index:10;position:relative}
+.p5-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,3.5vw,17px);color:#bcaaa4;text-align:center;max-width:355px;line-height:1.75;padding:0 22px;z-index:10;position:relative;margin-bottom:22px}
+
+.st-babak{
+  font-size:9px;letter-spacing:3px;
+  color:#f48fb1;text-transform:uppercase;
+  z-index:10;position:relative;
+  margin-bottom:4px;font-weight:600;margin-top:25px;
+}
+.st-title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(20px,5vw,28px);
+  color:#fff;text-align:center;line-height:1.25;
+  z-index:10;position:relative;margin-bottom:10px;
+}
+.photo-frame{
+  width:clamp(140px,32vw,200px);aspect-ratio:.78;
+  background:#fff;padding:6px 6px 18px;border-radius:3px;
+  box-shadow:0 8px 35px rgba(0,0,0,.5);
+  z-index:10;position:relative;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.photo-frame.tilt-l{transform:rotate(-3deg)}
+.photo-frame.tilt-r{transform:rotate(2.5deg)}
+.photo-frame.tilt-n{transform:rotate(1deg)}
+.photo-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#f8bbd0,#e91e63);display:flex;align-items:center;justify-content:center;font-size:50px;color:#fff;border-radius:2px}
+.desc-box{
+  background:rgba(35,20,20,.88);
+  border:1px solid rgba(255,182,193,.18);
+  border-radius:14px;padding:12px 14px;
+  max-width:330px;width:84%;
+  z-index:10;position:relative;text-align:center;
+  margin-bottom:12px;
+}
+.desc-text{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(12px,2.9vw,14px);
+  color:#d7ccc8;line-height:1.5;
+}
+
+.mini-photos{position:absolute;top:3%;left:0;width:100%;display:flex;justify-content:center;gap:10px;z-index:3;pointer-events:none}
+.mini-ph{width:44px;height:54px;background:#fff;padding:3px;border-radius:2px;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.mini-ph:nth-child(1){transform:rotate(-7deg);animation:mph 3.5s ease-in-out infinite}
+.mini-ph:nth-child(2){transform:rotate(4deg);animation:mph 3.5s ease-in-out infinite .4s}
+.mini-ph:nth-child(3){transform:rotate(-3deg);animation:mph 3.5s ease-in-out infinite .8s}
+.mini-ph:nth-child(4){transform:rotate(5deg);animation:mph 3.5s ease-in-out infinite 1.2s}
+@keyframes mph{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.mini-ph-inner{width:100%;height:100%;background:linear-gradient(135deg,#f8bbd0,#e91e63);border-radius:1px}
+.mini-ph-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:1px;
+  display:block;
+}
+.ov-label{font-size:10px;letter-spacing:3.5px;color:#f48fb1;text-transform:uppercase;z-index:10;position:relative;font-weight:600;margin-top:30px}
+.ov-title{font-family:'Playfair Display',serif;font-size:clamp(28px,7vw,42px);color:#fff;z-index:10;position:relative;margin:4px 0 14px}
+.ov-box{background:rgba(35,20,20,.88);border:1px solid rgba(255,182,193,.18);border-radius:16px;padding:18px 16px;max-width:355px;width:86%;z-index:10;position:relative;text-align:center;margin-bottom:14px}
+.ov-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(12.5px,3vw,15px);color:#d7ccc8;line-height:1.7}
+.ov-sign{font-family:'Dancing Script',cursive;font-size:16px;color:#f48fb1;margin-top:12px}
+.ov-btns{z-index:50;position:relative;display:flex;flex-direction:column;align-items:center;gap:6px}
+.link-restart{font-size:12px;color:rgba(255,182,193,.4);cursor:pointer;text-decoration:underline;background:none;border:none;padding:5px}
+
+/* ============ PAGE 10 BOUQUET ============ */
+#page10{background:linear-gradient(180deg,#fce4ec,#f8bbd0,#fce4ec)}
+.bouquet-real{width:clamp(220px,65vw,320px);height:clamp(280px,75vw,400px);z-index:10;position:relative;margin-bottom:12px;filter:drop-shadow(0 12px 30px rgba(0,0,0,.18))}
+.bq-title{font-family:'Great Vibes',cursive;font-size:clamp(22px,5.5vw,34px);color:#880e4f;z-index:10;position:relative;text-align:center;line-height:1.35;margin-bottom:6px}
+.bq-sub{font-size:clamp(12px,3vw,15px);color:#ad1457;z-index:10;position:relative;text-align:center;max-width:300px;line-height:1.6;margin-bottom:16px}
+.bq-bars{display:flex;gap:22px;z-index:10;position:relative;margin-bottom:20px}
+.bq-bar-item{text-align:center}
+.bq-bar-label{font-size:11px;color:#ad1457;margin-bottom:5px}
+.bq-bar-track{width:95px;height:5px;background:rgba(136,14,79,.15);border-radius:3px;overflow:hidden}
+.bq-bar-f{height:100%;border-radius:3px}
+.bq-bar-f.pink{background:linear-gradient(90deg,#e91e63,#ff80ab);width:72%}
+.bq-bar-f.blue{background:linear-gradient(90deg,#7986cb,#b39ddb);width:48%}
+.btn-back{background:linear-gradient(135deg,#880e4f,#ad1457);border:none;border-radius:28px;padding:13px 32px;font-weight:700;font-size:14px;color:#fff;cursor:pointer;z-index:50;position:relative;box-shadow:0 5px 18px rgba(136,14,79,.4);transition:transform .2s}
+.btn-back:active{transform:scale(.95)}
+
+.content-wrap{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:100%;max-width:600px;padding:15px 20px;
+  position:relative;z-index:10;
+  max-height:100vh;
+  overflow-y:auto;
+}
+.content-wrap::-webkit-scrollbar{display:none}
+</style>
+</head>
+<body>
+
+<!-- SVG DEFS FLOWERS -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- ROSE PINK -->
+    <symbol id="flower-rose" viewBox="0 0 100 100">
+      <g>
+        <ellipse cx="50" cy="50" rx="42" ry="42" fill="#f48fb1" opacity=".5"/>
+        <path d="M50,15 Q70,25 75,50 Q70,75 50,85 Q30,75 25,50 Q30,25 50,15Z" fill="#ec407a"/>
+        <path d="M50,22 Q66,30 70,50 Q66,70 50,78 Q34,70 30,50 Q34,30 50,22Z" fill="#e91e63"/>
+        <path d="M50,30 Q62,36 65,50 Q62,64 50,70 Q38,64 35,50 Q38,36 50,30Z" fill="#c2185b"/>
+        <path d="M50,38 Q58,42 60,50 Q58,58 50,62 Q42,58 40,50 Q42,42 50,38Z" fill="#ad1457"/>
+        <ellipse cx="50" cy="50" rx="6" ry="6" fill="#880e4f"/>
+        <ellipse cx="48" cy="48" rx="2" ry="2" fill="#fce4ec" opacity=".6"/>
+      </g>
+    </symbol>
+
+    <!-- PEONY -->
+    <symbol id="flower-peony" viewBox="0 0 100 100">
+      <g>
+        <g>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#ff80ab" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#ff80ab" transform="rotate(45 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#f48fb1" transform="rotate(90 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#f48fb1" transform="rotate(135 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#ec407a" transform="rotate(180 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#ec407a" transform="rotate(225 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#f48fb1" transform="rotate(270 50 50)"/>
+          <ellipse cx="50" cy="20" rx="14" ry="22" fill="#ff80ab" transform="rotate(315 50 50)"/>
+        </g>
+        <g>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#e91e63" transform="rotate(22 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#e91e63" transform="rotate(67 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#c2185b" transform="rotate(112 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#c2185b" transform="rotate(157 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#e91e63" transform="rotate(202 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#e91e63" transform="rotate(247 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#c2185b" transform="rotate(292 50 50)"/>
+          <ellipse cx="50" cy="28" rx="9" ry="14" fill="#c2185b" transform="rotate(337 50 50)"/>
+        </g>
+        <circle cx="50" cy="50" r="10" fill="#ffeb3b"/>
+        <circle cx="46" cy="47" r="2" fill="#fff" opacity=".7"/>
+        <circle cx="54" cy="50" r="1.5" fill="#fff" opacity=".5"/>
+      </g>
+    </symbol>
+
+    <!-- DAISY PINK -->
+    <symbol id="flower-daisy" viewBox="0 0 100 100">
+      <g>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#fce4ec" transform="rotate(0 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#f8bbd0" transform="rotate(30 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#fce4ec" transform="rotate(60 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#f8bbd0" transform="rotate(90 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#fce4ec" transform="rotate(120 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#f8bbd0" transform="rotate(150 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#fce4ec" transform="rotate(180 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#f8bbd0" transform="rotate(210 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#fce4ec" transform="rotate(240 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#f8bbd0" transform="rotate(270 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#fce4ec" transform="rotate(300 50 50)"/>
+        <ellipse cx="50" cy="18" rx="8" ry="20" fill="#f8bbd0" transform="rotate(330 50 50)"/>
+        <circle cx="50" cy="50" r="11" fill="#ff9800"/>
+        <circle cx="50" cy="50" r="8" fill="#ffb300"/>
+        <circle cx="47" cy="47" r="2" fill="#fff9c4"/>
+      </g>
+    </symbol>
+
+    <!-- CHERRY BLOSSOM -->
+    <symbol id="flower-cherry" viewBox="0 0 100 100">
+      <g>
+        <path d="M50,50 L50,15 Q60,20 55,35 Q60,40 50,50Z" fill="#ffb6c1" transform="rotate(0 50 50)"/>
+        <path d="M50,50 L50,15 Q60,20 55,35 Q60,40 50,50Z" fill="#ffb6c1" transform="rotate(72 50 50)"/>
+        <path d="M50,50 L50,15 Q60,20 55,35 Q60,40 50,50Z" fill="#ffb6c1" transform="rotate(144 50 50)"/>
+        <path d="M50,50 L50,15 Q60,20 55,35 Q60,40 50,50Z" fill="#ffb6c1" transform="rotate(216 50 50)"/>
+        <path d="M50,50 L50,15 Q60,20 55,35 Q60,40 50,50Z" fill="#ffb6c1" transform="rotate(288 50 50)"/>
+        <ellipse cx="50" cy="25" rx="11" ry="18" fill="#ff80ab" opacity=".85" transform="rotate(0 50 50)"/>
+        <ellipse cx="50" cy="25" rx="11" ry="18" fill="#ff80ab" opacity=".85" transform="rotate(72 50 50)"/>
+        <ellipse cx="50" cy="25" rx="11" ry="18" fill="#ff80ab" opacity=".85" transform="rotate(144 50 50)"/>
+        <ellipse cx="50" cy="25" rx="11" ry="18" fill="#ff80ab" opacity=".85" transform="rotate(216 50 50)"/>
+        <ellipse cx="50" cy="25" rx="11" ry="18" fill="#ff80ab" opacity=".85" transform="rotate(288 50 50)"/>
+        <circle cx="50" cy="50" r="6" fill="#fff59d"/>
+        <circle cx="50" cy="50" r="3" fill="#f57f17"/>
+      </g>
+    </symbol>
+
+    <!-- HYDRANGEA BLUE -->
+    <symbol id="flower-hydra" viewBox="0 0 100 100">
+      <g>
+        <circle cx="35" cy="35" r="14" fill="#b39ddb"/>
+        <circle cx="65" cy="35" r="14" fill="#9fa8da"/>
+        <circle cx="35" cy="65" r="14" fill="#9fa8da"/>
+        <circle cx="65" cy="65" r="14" fill="#b39ddb"/>
+        <circle cx="50" cy="50" r="16" fill="#ce93d8"/>
+        <circle cx="30" cy="50" r="10" fill="#9fa8da" opacity=".8"/>
+        <circle cx="70" cy="50" r="10" fill="#b39ddb" opacity=".8"/>
+        <circle cx="50" cy="30" r="10" fill="#ce93d8" opacity=".8"/>
+        <circle cx="50" cy="70" r="10" fill="#9fa8da" opacity=".8"/>
+        <circle cx="35" cy="35" r="2" fill="#fff"/>
+        <circle cx="65" cy="35" r="2" fill="#fff"/>
+        <circle cx="50" cy="50" r="2" fill="#fff"/>
+      </g>
+    </symbol>
+
+   <!-- BOUQUET REALISTIS - GANTI SYMBOL LAMA -->
+<symbol id="bouquet" viewBox="0 0 400 550">
+  
+  <!-- ============ WRAPPING PAPER BACKGROUND ============ -->
+  <g id="wrapBack">
+    <!-- Outer wrap (krem/cream) -->
+    <path d="M200,380 L40,540 L360,540 Z" fill="#f5e6d3" opacity="0.95"/>
+    <path d="M200,385 L55,535 L345,535 Z" fill="#ede0c8"/>
+    <!-- Inner wrap layer -->
+    <path d="M200,395 L80,525 L320,525 Z" fill="#e8d5b7"/>
+    <!-- Paper folds shading -->
+    <path d="M200,400 L100,520 L150,525 L200,400Z" fill="#d4c1a3" opacity="0.6"/>
+    <path d="M200,400 L300,520 L250,525 L200,400Z" fill="#c9b594" opacity="0.5"/>
+    <!-- Paper crinkle lines -->
+    <path d="M180,420 L120,510" stroke="#c9b594" stroke-width="1" opacity="0.4"/>
+    <path d="M220,420 L280,510" stroke="#c9b594" stroke-width="1" opacity="0.4"/>
+    <path d="M200,410 L160,515" stroke="#d4c1a3" stroke-width="1" opacity="0.5"/>
+    <path d="M200,410 L240,515" stroke="#d4c1a3" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- ============ RIBBON ============ -->
+  <g id="ribbon">
+    <!-- Ribbon center knot -->
+    <ellipse cx="200" cy="430" rx="28" ry="14" fill="#d4a574"/>
+    <ellipse cx="200" cy="428" rx="26" ry="11" fill="#e8b88a"/>
+    <!-- Left ribbon tail -->
+    <path d="M178,432 Q160,470 145,510 Q155,508 165,510 Q175,470 188,438 Z" fill="#d4a574"/>
+    <path d="M178,432 Q165,465 152,500" stroke="#b8895a" stroke-width="1" fill="none"/>
+    <!-- Right ribbon tail -->
+    <path d="M222,432 Q240,470 255,510 Q245,508 235,510 Q225,470 212,438 Z" fill="#d4a574"/>
+    <path d="M222,432 Q235,465 248,500" stroke="#b8895a" stroke-width="1" fill="none"/>
+    <!-- Left bow -->
+    <path d="M180,425 Q150,415 145,430 Q150,445 180,435 Z" fill="#c9985f"/>
+    <!-- Right bow -->
+    <path d="M220,425 Q250,415 255,430 Q250,445 220,435 Z" fill="#c9985f"/>
+    <!-- Knot center -->
+    <rect x="194" y="420" width="12" height="20" rx="3" fill="#b8895a"/>
+  </g>
+
+  <!-- ============ STEMS ============ -->
+  <g id="stems">
+    <path d="M150,380 Q160,450 180,520" stroke="#5d7a3a" stroke-width="3" fill="none"/>
+    <path d="M170,380 Q175,450 190,520" stroke="#6b8c44" stroke-width="3" fill="none"/>
+    <path d="M200,380 Q200,450 200,520" stroke="#5d7a3a" stroke-width="3" fill="none"/>
+    <path d="M230,380 Q225,450 210,520" stroke="#6b8c44" stroke-width="3" fill="none"/>
+    <path d="M250,380 Q240,450 220,520" stroke="#5d7a3a" stroke-width="3" fill="none"/>
+  </g>
+
+  <!-- ============ LEAVES (BACK LAYER) - LOTS OF GREEN LEAVES ============ -->
+  <g id="leavesBack">
+    <!-- Top spikes (eucalyptus/lavender stems) -->
+    <g transform="translate(80,160) rotate(-25)">
+      <path d="M0,0 Q-3,-40 0,-90" stroke="#7a9e4a" stroke-width="2" fill="none"/>
+      <ellipse cx="-5" cy="-20" rx="6" ry="10" fill="#8fb05d" transform="rotate(-30)"/>
+      <ellipse cx="5" cy="-40" rx="6" ry="10" fill="#9ec268" transform="rotate(30)"/>
+      <ellipse cx="-5" cy="-60" rx="6" ry="10" fill="#8fb05d" transform="rotate(-30)"/>
+      <ellipse cx="5" cy="-80" rx="5" ry="9" fill="#9ec268" transform="rotate(30)"/>
+    </g>
+    <g transform="translate(320,160) rotate(25)">
+      <path d="M0,0 Q3,-40 0,-90" stroke="#7a9e4a" stroke-width="2" fill="none"/>
+      <ellipse cx="5" cy="-20" rx="6" ry="10" fill="#8fb05d" transform="rotate(30)"/>
+      <ellipse cx="-5" cy="-40" rx="6" ry="10" fill="#9ec268" transform="rotate(-30)"/>
+      <ellipse cx="5" cy="-60" rx="6" ry="10" fill="#8fb05d" transform="rotate(30)"/>
+      <ellipse cx="-5" cy="-80" rx="5" ry="9" fill="#9ec268" transform="rotate(-30)"/>
+    </g>
+
+    <!-- Big background leaves -->
+    <ellipse cx="60" cy="280" rx="22" ry="55" fill="#5d8a3a" transform="rotate(-50 60 280)" opacity="0.9"/>
+    <ellipse cx="340" cy="280" rx="22" ry="55" fill="#5d8a3a" transform="rotate(50 340 280)" opacity="0.9"/>
+    <ellipse cx="100" cy="220" rx="20" ry="48" fill="#6b9842" transform="rotate(-40 100 220)" opacity="0.85"/>
+    <ellipse cx="300" cy="220" rx="20" ry="48" fill="#6b9842" transform="rotate(40 300 220)" opacity="0.85"/>
+    <ellipse cx="150" cy="180" rx="16" ry="40" fill="#7aa651" transform="rotate(-25 150 180)" opacity="0.85"/>
+    <ellipse cx="250" cy="180" rx="16" ry="40" fill="#7aa651" transform="rotate(25 250 180)" opacity="0.85"/>
+    
+    <!-- Side filler leaves -->
+    <ellipse cx="45" cy="340" rx="15" ry="35" fill="#6b9842" transform="rotate(-65 45 340)"/>
+    <ellipse cx="355" cy="340" rx="15" ry="35" fill="#6b9842" transform="rotate(65 355 340)"/>
+    <ellipse cx="75" cy="380" rx="14" ry="30" fill="#5d8a3a" transform="rotate(-75 75 380)"/>
+    <ellipse cx="325" cy="380" rx="14" ry="30" fill="#5d8a3a" transform="rotate(75 325 380)"/>
+
+    <!-- Small leaves between flowers -->
+    <ellipse cx="130" cy="300" rx="10" ry="20" fill="#8fb55a" transform="rotate(-30 130 300)"/>
+    <ellipse cx="270" cy="300" rx="10" ry="20" fill="#8fb55a" transform="rotate(30 270 300)"/>
+    <ellipse cx="200" cy="170" rx="9" ry="22" fill="#7aa651"/>
+  </g>
+
+  <!-- ============ FLOWERS - BACK LAYER ============ -->
+  <g id="flowersBack">
+    <!-- Hydrangea purple/blue clusters back -->
+    <g transform="translate(110,240) scale(0.75)"><use href="#bq-hydra"/></g>
+    <g transform="translate(290,240) scale(0.75)"><use href="#bq-hydra"/></g>
+    <g transform="translate(200,200) scale(0.7)"><use href="#bq-hydra"/></g>
+    
+    <!-- Cherry blossom -->
+    <g transform="translate(70,300) scale(0.55)"><use href="#bq-cherry"/></g>
+    <g transform="translate(330,300) scale(0.55)"><use href="#bq-cherry"/></g>
+  </g>
+
+  <!-- ============ FLOWERS - MIDDLE LAYER ============ -->
+  <g id="flowersMid">
+    <!-- Pink roses main -->
+    <g transform="translate(150,280) scale(0.95)"><use href="#bq-rose"/></g>
+    <g transform="translate(250,280) scale(0.95)"><use href="#bq-rose"/></g>
+    <g transform="translate(200,260) scale(1)"><use href="#bq-rose-light"/></g>
+    
+    <!-- Peony -->
+    <g transform="translate(100,310) scale(0.8)"><use href="#bq-peony"/></g>
+    <g transform="translate(300,310) scale(0.8)"><use href="#bq-peony"/></g>
+  </g>
+
+  <!-- ============ FLOWERS - FRONT LAYER (Biggest, most detailed) ============ -->
+  <g id="flowersFront">
+    <!-- Daisies white -->
+    <g transform="translate(175,340) scale(0.7)"><use href="#bq-daisy"/></g>
+    <g transform="translate(225,340) scale(0.7)"><use href="#bq-daisy"/></g>
+    
+    <!-- Big center pink rose -->
+    <g transform="translate(200,320) scale(1.1)"><use href="#bq-rose-big"/></g>
+    
+    <!-- Small accent flowers -->
+    <g transform="translate(130,355) scale(0.55)"><use href="#bq-rose"/></g>
+    <g transform="translate(270,355) scale(0.55)"><use href="#bq-rose"/></g>
+    <g transform="translate(160,375) scale(0.45)"><use href="#bq-cherry"/></g>
+    <g transform="translate(240,375) scale(0.45)"><use href="#bq-cherry"/></g>
+  </g>
+
+  <!-- ============ HIGHLIGHTS ============ -->
+  <g id="highlights">
+    <ellipse cx="180" cy="240" rx="50" ry="20" fill="#fff" opacity="0.1"/>
+  </g>
+</symbol>
+
+<!-- ============ BOUQUET FLOWER SYMBOLS (more detailed) ============ -->
+
+<!-- Big Rose Pink -->
+<symbol id="bq-rose-big" viewBox="-50 -50 100 100">
+  <g>
+    <!-- Outer petals -->
+    <path d="M0,-40 Q25,-35 35,-15 Q40,5 30,25 Q15,40 0,40 Q-15,40 -30,25 Q-40,5 -35,-15 Q-25,-35 0,-40Z" fill="#f48fb1"/>
+    <path d="M0,-35 Q22,-30 30,-12 Q35,5 26,22 Q13,35 0,35 Q-13,35 -26,22 Q-35,5 -30,-12 Q-22,-30 0,-35Z" fill="#ec407a"/>
+    <!-- Middle petals - curled -->
+    <path d="M0,-28 Q18,-25 25,-10 Q28,5 20,18 Q10,28 0,28 Q-10,28 -20,18 Q-28,5 -25,-10 Q-18,-25 0,-28Z" fill="#e91e63"/>
+    <path d="M-20,-5 Q-15,-18 0,-22 Q15,-18 20,-5 Q15,8 0,12 Q-15,8 -20,-5Z" fill="#d81b60"/>
+    <!-- Inner curled petals -->
+    <path d="M-12,-3 Q-8,-12 0,-15 Q8,-12 12,-3 Q8,5 0,8 Q-8,5 -12,-3Z" fill="#c2185b"/>
+    <path d="M-7,-1 Q-4,-7 0,-9 Q4,-7 7,-1 Q4,4 0,5 Q-4,4 -7,-1Z" fill="#ad1457"/>
+    <!-- Center bud -->
+    <ellipse cx="0" cy="0" rx="3" ry="3" fill="#880e4f"/>
+    <!-- Highlight -->
+    <ellipse cx="-8" cy="-10" rx="6" ry="3" fill="#fff" opacity="0.3" transform="rotate(-30)"/>
+  </g>
+</symbol>
+
+<!-- Rose Pink Standard -->
+<symbol id="bq-rose" viewBox="-50 -50 100 100">
+  <g>
+    <path d="M0,-38 Q25,-32 33,-12 Q37,8 28,25 Q12,38 0,38 Q-12,38 -28,25 Q-37,8 -33,-12 Q-25,-32 0,-38Z" fill="#f48fb1"/>
+    <path d="M0,-30 Q20,-25 26,-8 Q30,8 22,20 Q10,30 0,30 Q-10,30 -22,20 Q-30,8 -26,-8 Q-20,-25 0,-30Z" fill="#ec407a"/>
+    <path d="M-18,-5 Q-13,-16 0,-19 Q13,-16 18,-5 Q13,7 0,10 Q-13,7 -18,-5Z" fill="#e91e63"/>
+    <path d="M-10,-2 Q-7,-10 0,-13 Q7,-10 10,-2 Q7,4 0,7 Q-7,4 -10,-2Z" fill="#c2185b"/>
+    <ellipse cx="0" cy="0" rx="3" ry="3" fill="#880e4f"/>
+    <ellipse cx="-6" cy="-8" rx="4" ry="2" fill="#fff" opacity="0.35" transform="rotate(-30)"/>
+  </g>
+</symbol>
+
+<!-- Light Pink Rose -->
+<symbol id="bq-rose-light" viewBox="-50 -50 100 100">
+  <g>
+    <path d="M0,-38 Q25,-32 33,-12 Q37,8 28,25 Q12,38 0,38 Q-12,38 -28,25 Q-37,8 -33,-12 Q-25,-32 0,-38Z" fill="#fce4ec"/>
+    <path d="M0,-30 Q20,-25 26,-8 Q30,8 22,20 Q10,30 0,30 Q-10,30 -22,20 Q-30,8 -26,-8 Q-20,-25 0,-30Z" fill="#f8bbd0"/>
+    <path d="M-18,-5 Q-13,-16 0,-19 Q13,-16 18,-5 Q13,7 0,10 Q-13,7 -18,-5Z" fill="#f48fb1"/>
+    <path d="M-10,-2 Q-7,-10 0,-13 Q7,-10 10,-2 Q7,4 0,7 Q-7,4 -10,-2Z" fill="#ec407a"/>
+    <ellipse cx="0" cy="0" rx="3" ry="3" fill="#c2185b"/>
+    <ellipse cx="-6" cy="-8" rx="4" ry="2" fill="#fff" opacity="0.5" transform="rotate(-30)"/>
+  </g>
+</symbol>
+
+<!-- Peony Bouquet -->
+<symbol id="bq-peony" viewBox="-50 -50 100 100">
+  <g>
+    <g>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#ff80ab" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#ff80ab" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#f48fb1" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#f48fb1" transform="rotate(135)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#ec407a" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#ec407a" transform="rotate(225)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#f48fb1" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-25" rx="14" ry="22" fill="#ff80ab" transform="rotate(315)"/>
+    </g>
+    <g>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#e91e63" transform="rotate(22)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#e91e63" transform="rotate(67)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#c2185b" transform="rotate(112)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#c2185b" transform="rotate(157)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#e91e63" transform="rotate(202)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#e91e63" transform="rotate(247)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#c2185b" transform="rotate(292)"/>
+      <ellipse cx="0" cy="-18" rx="9" ry="15" fill="#c2185b" transform="rotate(337)"/>
+    </g>
+    <circle cx="0" cy="0" r="9" fill="#ad1457"/>
+    <circle cx="-2" cy="-2" r="2" fill="#fff" opacity="0.6"/>
+  </g>
+</symbol>
+
+<!-- Daisy -->
+<symbol id="bq-daisy" viewBox="-50 -50 100 100">
+  <g>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fff" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fce4ec" transform="rotate(30)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fff" transform="rotate(60)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fce4ec" transform="rotate(90)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fff" transform="rotate(120)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fce4ec" transform="rotate(150)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fff" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fce4ec" transform="rotate(210)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fff" transform="rotate(240)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fce4ec" transform="rotate(270)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fff" transform="rotate(300)"/>
+    <ellipse cx="0" cy="-25" rx="7" ry="20" fill="#fce4ec" transform="rotate(330)"/>
+    <circle cx="0" cy="0" r="10" fill="#ff9800"/>
+    <circle cx="0" cy="0" r="7" fill="#ffb300"/>
+    <circle cx="-2" cy="-2" r="2" fill="#fff9c4"/>
+  </g>
+</symbol>
+
+<!-- Cherry blossom -->
+<symbol id="bq-cherry" viewBox="-50 -50 100 100">
+  <g>
+    <ellipse cx="0" cy="-22" rx="11" ry="18" fill="#ffb6c1" opacity="0.9" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-22" rx="11" ry="18" fill="#ff80ab" opacity="0.9" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-22" rx="11" ry="18" fill="#ffb6c1" opacity="0.9" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-22" rx="11" ry="18" fill="#ff80ab" opacity="0.9" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-22" rx="11" ry="18" fill="#ffb6c1" opacity="0.9" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="6" fill="#fff59d"/>
+    <circle cx="0" cy="0" r="3" fill="#f57f17"/>
+    <!-- stamens -->
+    <line x1="0" y1="0" x2="-6" y2="-8" stroke="#f57f17" stroke-width="1"/>
+    <line x1="0" y1="0" x2="6" y2="-8" stroke="#f57f17" stroke-width="1"/>
+    <line x1="0" y1="0" x2="8" y2="0" stroke="#f57f17" stroke-width="1"/>
+    <line x1="0" y1="0" x2="-8" y2="0" stroke="#f57f17" stroke-width="1"/>
+  </g>
+</symbol>
+
+<!-- Hydrangea cluster -->
+<symbol id="bq-hydra" viewBox="-50 -50 100 100">
+  <g>
+    <!-- Multiple small 4-petal flowers clustered -->
+    <g transform="translate(-15,-15)">
+      <ellipse cx="-7" cy="0" rx="6" ry="9" fill="#b39ddb"/>
+      <ellipse cx="7" cy="0" rx="6" ry="9" fill="#9fa8da"/>
+      <ellipse cx="0" cy="-7" rx="9" ry="6" fill="#ce93d8"/>
+      <ellipse cx="0" cy="7" rx="9" ry="6" fill="#9fa8da"/>
+      <circle cx="0" cy="0" r="2" fill="#fff"/>
+    </g>
+    <g transform="translate(15,-15)">
+      <ellipse cx="-7" cy="0" rx="6" ry="9" fill="#9fa8da"/>
+      <ellipse cx="7" cy="0" rx="6" ry="9" fill="#b39ddb"/>
+      <ellipse cx="0" cy="-7" rx="9" ry="6" fill="#ce93d8"/>
+      <ellipse cx="0" cy="7" rx="9" ry="6" fill="#9fa8da"/>
+      <circle cx="0" cy="0" r="2" fill="#fff"/>
+    </g>
+    <g transform="translate(-15,15)">
+      <ellipse cx="-7" cy="0" rx="6" ry="9" fill="#ce93d8"/>
+      <ellipse cx="7" cy="0" rx="6" ry="9" fill="#b39ddb"/>
+      <ellipse cx="0" cy="-7" rx="9" ry="6" fill="#9fa8da"/>
+      <ellipse cx="0" cy="7" rx="9" ry="6" fill="#ce93d8"/>
+      <circle cx="0" cy="0" r="2" fill="#fff"/>
+    </g>
+    <g transform="translate(15,15)">
+      <ellipse cx="-7" cy="0" rx="6" ry="9" fill="#b39ddb"/>
+      <ellipse cx="7" cy="0" rx="6" ry="9" fill="#9fa8da"/>
+      <ellipse cx="0" cy="-7" rx="9" ry="6" fill="#ce93d8"/>
+      <ellipse cx="0" cy="7" rx="9" ry="6" fill="#b39ddb"/>
+      <circle cx="0" cy="0" r="2" fill="#fff"/>
+    </g>
+    <g transform="translate(0,0)">
+      <ellipse cx="-7" cy="0" rx="7" ry="10" fill="#ce93d8"/>
+      <ellipse cx="7" cy="0" rx="7" ry="10" fill="#b39ddb"/>
+      <ellipse cx="0" cy="-7" rx="10" ry="7" fill="#9fa8da"/>
+      <ellipse cx="0" cy="7" rx="10" ry="7" fill="#ce93d8"/>
+      <circle cx="0" cy="0" r="3" fill="#fff"/>
+    </g>
+  </g>
+</symbol>
+
+<!-- FLASH & CURTAIN -->
+<div class="flash" id="flash"></div>
+<div class="curtain" id="curtain">
+  <div class="curtain-l"><div class="curtain-folds"></div></div>
+  <div class="curtain-r"><div class="curtain-folds"></div></div>
+</div>
+
+<!-- ===== PAGE 1 ===== -->
+<div class="page active" id="page1">
+  <div class="flower-spinner">
+    <svg viewBox="0 0 100 100" width="100%" height="100%"><use href="#flower-rose"/></svg>
+  </div>
+  <div class="load-label">Sebentar, bunganya sedang mekar...</div>
+  <div class="load-bar-bg"><div class="load-bar-fill" id="bar"></div></div>
+  <div class="load-pct" id="pct">0%</div>
+</div>
+
+<!-- ===== PAGE 2 FLOWER BLOOM ===== -->
+<div class="page" id="page2">
+  <div class="flower-stage" id="flowerStage"></div>
+</div>
+
+<!-- ===== PAGE 3 ===== -->
+<div class="page" id="page3">
+  <canvas id="cvs3"></canvas>
+  <div class="name-center" id="clickName">Astrid</div>
+  <div class="hint">✨ ketuk nama untuk melanjutkan ✨</div>
+</div>
+
+<!-- ===== PAGE 4 ===== -->
+<div class="page" id="page4">
+  <div class="card-ticket">
+    <div class="tk-label">PERTUNJUKAN SPESIAL</div>
+    <div class="tk-title">Khusus buat<br>sayangku Astrid</div>
+    <div class="tk-sub">untuk Astrid</div>
+    <button class="btn-gold" id="btnCurtain">Buka tirai</button>
+    <div class="tk-hint">tap tirainya buat mulai cerita</div>
+  </div>
+</div>
+
+<!-- ===== PAGE 5 ===== -->
+<div class="page bg-stage" id="page5">
+  <canvas id="cvs5"></canvas>
+  <div class="spot"></div>
+  <div class="lights-row" id="lr5"></div>
+  <div class="content-wrap">
+    <div class="p5-label">BINTANG MALAM INI</div>
+    <div class="p5-name">Astrid</div>
+    <div class="p5-text">sayangg, aku cuma mau bahas satu foto kamu. cuma kamu rebahan, rambut agak berantakan, senyum kecil, dan mata yang masih manja. tapi entah kenapa, hasilnya terlalu berbahaya.</div>
+    <button class="btn-gold" id="btnStart">Mulai ceritanya</button>
+  </div>
+  <div class="stage-floor"></div>
+</div>
+
+<!-- ===== PAGE 6 BABAK 1 ===== -->
+<div class="page bg-stage" id="page6">
+  <div class="lights-row" id="lr6"></div>
+  <div class="content-wrap">
+    <div class="st-babak">BABAK 1 / 3</div>
+    <div class="st-title">rambut yang jatuhnya<br>terlalu pas</div>
+   <div class="photo-frame tilt-l">
+  <img src="foto1.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:2px">
+</div>
+    <div class="desc-box">
+      <div class="desc-text">sayangg, rambut kamu di foto ini jatuhnya niat banget. diagonalnya pas, acaknya cantik, berantakannya malah estetik.</div>
+    </div>
+    <button class="btn-gold" id="btnP6">Lanjut cerita</button>
+  </div>
+  <div class="stage-floor"></div>
+</div>
+
+<!-- ===== PAGE 7 BABAK 2 ===== -->
+<div class="page bg-stage" id="page7">
+  <div class="lights-row" id="lr7"></div>
+  <div class="content-wrap">
+    <div class="st-babak">BABAK 2 / 3</div>
+    <div class="st-title">senyum kecil yang<br>menang besar</div>
+          <div class="photo-frame tilt-r">
+  <img src="foto1.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:2px">
+</div>
+    <div class="desc-box">
+      <div class="desc-text">senyum kamu kecil, tapi efeknya besar banget, sayangg. nggak banyak gaya, nggak perlu usaha keras, tapi tetap bikin aku kalah. kayak lampu kamar boleh redup, tapi wajah kamu tetap punya glow sendiri.</div>
+    </div>
+    <button class="btn-gold" id="btnP7">Lanjut cerita</button>
+  </div>
+  <div class="stage-floor"></div>
+</div>
+
+<!-- ===== PAGE 8 BABAK 3 (BARU) ===== -->
+<div class="page bg-stage" id="page8">
+  <div class="lights-row" id="lr8"></div>
+  <div class="content-wrap">
+    <div class="st-babak">BABAK 3 / 3</div>
+    <div class="st-title">meteor pun kalah<br>terang</div>
+    <div class="photo-frame tilt-n">
+  <img src="foto1.jpeg" style="width:100%;height:100%;object-fit:cover;border-radius:2px">
+</div>
+    <div class="desc-box">
+      <div class="desc-text">andai batu meteor mendekati matahari buat adu terang, aku tetap pilih kamu pemenangnya, sayangg. foto ini nggak cukup kalau cuma disimpan di galeri. kayaknya harus aku abadikan di figura, biar dunia tahu: rambut berantakan kamu pernah mengalahkan tata surya.</div>
+    </div>
+    <button class="btn-gold" id="btnP8">Lihat penutup</button>
+  </div>
+  <div class="stage-floor"></div>
+</div>
+
+<!-- ===== PAGE 9 STANDING OVATION ===== -->
+<div class="page bg-stage" id="page9">
+  <canvas id="cvs9"></canvas>
+  <div class="lights-row" id="lr9"></div>
+  <div class="mini-photos">
+  <div class="mini-ph"><img src="foto1.jpeg" class="mini-ph-img" alt="Astrid"></div>
+  <div class="mini-ph"><img src="foto1.jpeg" class="mini-ph-img" alt="Astrid"></div>
+  <div class="mini-ph"><img src="foto1.jpeg" class="mini-ph-img" alt="Astrid"></div>
+  <div class="mini-ph"><img src="foto1.jpeg" class="mini-ph-img" alt="Astrid"></div>
+</div>>
+  <div class="content-wrap">
+    <div class="ov-label">STANDING OVATION</div>
+    <div class="ov-title">Mwehehehe</div>
+    <div class="ov-box">
+      <div class="ov-text">sayangg, mungkin buat kamu ini cuma foto biasa.<br><br>tapi buat aku, ini momen yang terlalu manis buat lewat begitu aja. rambut kamu jatuhnya pas, senyum kamu hangatnya pas, dan semuanya terasa kayak foto yang memang minta diabadikan.<br><br>jadi iya, kalau boleh aku simpan di figura. bukan karena fotonya dibuat sempurna, tapi karena kamu di foto ini cantiknya terlalu.</div>
+      <div class="ov-sign">— Dimas, buat Astrid</div>
+    </div>
+    <div class="ov-btns">
+      <button class="btn-gold" id="btnBouquet">Lihat bouquet</button>
+      <button class="link-restart" id="btnRestart1">Ulang dari awal</button>
+    </div>
+  </div>
+  <div class="stage-floor"></div>
+</div>
+
+<!-- ===== PAGE 10 BOUQUET ===== -->
+<div class="page" id="page10">
+  <div class="bouquet-real">
+    <svg viewBox="0 0 400 550" width="100%" height="100%"><use href="#bouquet"/></svg>
+  </div>
+  <div class="bq-title">Thank You for Staying<br>untuk Astrid</div>
+  <div class="bq-sub">Terima kasih karena tetap ada.<br>Dari Dimas, dengan sepenuh hati 💕</div>
+  <div class="bq-bars">
+    <div class="bq-bar-item">
+      <div class="bq-bar-label">Pink rose</div>
+      <div class="bq-bar-track"><div class="bq-bar-f pink"></div></div>
+    </div>
+    <div class="bq-bar-item">
+      <div class="bq-bar-label">Blue lavender</div>
+      <div class="bq-bar-track"><div class="bq-bar-f blue"></div></div>
+    </div>
+  </div>
+  <button class="btn-back" id="btnBack">Kembali ke awal</button>
+</div>
+
+<script>
+var currentPage = 'page1';
+function go(id){
+  if(currentPage === id) return;
+  document.getElementById(currentPage).classList.remove('active');
+  setTimeout(function(){
+    document.getElementById(id).classList.add('active');
+    currentPage = id;
+  }, 50);
+}
+
+/* ============ PAGE 1 LOADING ============ */
+var progress = 0;
+var barEl = document.getElementById('bar');
+var pctEl = document.getElementById('pct');
+var loadingInterval = null;
+
+function startLoading(){
+  progress = 0;
+  barEl.style.width = '0%';
+  pctEl.textContent = '0%';
+  if(loadingInterval) clearInterval(loadingInterval);
+  loadingInterval = setInterval(function(){
+    progress += Math.random()*3.5 + 1;
+    if(progress >= 100){
+      progress = 100;
+      clearInterval(loadingInterval);
+      setTimeout(function(){
+        go('page2');
+        runPage2();
+      }, 500);
+    }
+    barEl.style.width = Math.floor(progress)+'%';
+    pctEl.textContent = Math.floor(progress)+'%';
+  }, 80);
+}
+setTimeout(startLoading, 400);
+
+/* ============ PAGE 2 FLOWER BLOOM (REALISTIC) ============ */
+var page2Timeout = [];
+function clearPage2Timeout(){
+  page2Timeout.forEach(function(t){clearTimeout(t)});
+  page2Timeout = [];
+}
+
+function runPage2(){
+  var stage = document.getElementById('flowerStage');
+  stage.innerHTML = '';
+  clearPage2Timeout();
+
+  var W = window.innerWidth;
+  var H = window.innerHeight;
+  var flowerTypes = ['flower-rose','flower-peony','flower-daisy','flower-cherry','flower-hydra'];
+  var flowers = [];
+
+  // Generate 70 flowers: big to small, covering whole screen
+  // Big ones first (background), then medium, then small detail
+  var sizes = [];
+  // BIG
+  for(var i=0;i<15;i++) sizes.push(Math.random()*120+180); // 180-300px
+  // MEDIUM
+  for(var i=0;i<25;i++) sizes.push(Math.random()*80+100); // 100-180px
+  // SMALL
+  for(var i=0;i<35;i++) sizes.push(Math.random()*50+50); // 50-100px
+
+  // Sort largest first (background)
+  sizes.sort(function(a,b){return b-a});
+
+  // Place flowers in grid-like manner overlapping
+  for(var i=0;i<sizes.length;i++){
+    var size = sizes[i];
+    // Grid position with random offset
+    var gridCols = Math.ceil(W / (size * 0.7));
+    var gridRows = Math.ceil(H / (size * 0.7));
+    var col, row;
+    if(i < 15){
+      // big flowers spread out
+      col = Math.random() * gridCols;
+      row = Math.random() * gridRows;
+    } else {
+      col = Math.random() * gridCols;
+      row = Math.random() * gridRows;
+    }
+    var x = (col * (W/gridCols)) + Math.random()*40 - 20;
+    var y = (row * (H/gridRows)) + Math.random()*40 - 20;
+    // Clamp
+    if(x < 0) x = Math.random()*W*0.3;
+    if(x > W) x = W - Math.random()*W*0.3;
+    if(y < 0) y = Math.random()*H*0.3;
+    if(y > H) y = H - Math.random()*H*0.3;
+
+    flowers.push({
+      type: flowerTypes[Math.floor(Math.random()*flowerTypes.length)],
+      x: x, y: y, size: size,
+      rot: Math.random()*360,
+      delay: i*40,
+      scatX: (Math.random()-0.5)*W*2,
+      scatY: (Math.random()-0.5)*H*2
+    });
+  }
+
+  // Create elements with bloom animation
+  flowers.forEach(function(f, idx){
+    var div = document.createElement('div');
+    div.className = 'real-flower';
+    div.style.left = f.x + 'px';
+    div.style.top = f.y + 'px';
+    div.style.width = f.size + 'px';
+    div.style.height = f.size + 'px';
+    div.style.setProperty('--rot', f.rot+'deg');
+    div.style.setProperty('--sx', f.scatX+'px');
+    div.style.setProperty('--sy', f.scatY+'px');
+    div.innerHTML = '<svg viewBox="0 0 100 100" width="100%" height="100%"><use href="#'+f.type+'"/></svg>';
+    div.style.animation = 'flowerBloom 1.5s ease-out '+(f.delay)+'ms forwards';
+    stage.appendChild(div);
+    div._flowerData = f;
+  });
+
+  // After all bloomed, start pulse
+  var totalBloomTime = flowers.length * 40 + 1500;
+  page2Timeout.push(setTimeout(function(){
+    var allFlowers = stage.querySelectorAll('.real-flower');
+    allFlowers.forEach(function(div, i){
+      div.style.animation = 'flowerPulse '+(2 + Math.random()*1)+'s ease-in-out '+(Math.random()*0.5)+'s infinite';
+    });
+  }, totalBloomTime));
+
+  // After pulse for 2.5s, scatter
+  page2Timeout.push(setTimeout(function(){
+    var allFlowers = stage.querySelectorAll('.real-flower');
+    allFlowers.forEach(function(div, i){
+      div.style.animation = 'flowerScatter 1.5s ease-in '+(Math.random()*0.4)+'s forwards';
+    });
+  }, totalBloomTime + 2500));
+
+  // Then go to page 3
+  page2Timeout.push(setTimeout(function(){
+    go('page3');
+    runPage3();
+  }, totalBloomTime + 2500 + 1800));
+}
+
+/* ============ PAGE 3 HEART ============ */
+var anim3Running = false;
+function runPage3(){
+  var c = document.getElementById('cvs3');
+  var ctx = c.getContext('2d');
+  c.width = window.innerWidth; c.height = window.innerHeight;
+  var W = c.width, H = c.height;
+  var words = [];
+  var total = 180;
+  function hx(t){ return 16*Math.pow(Math.sin(t),3); }
+  function hy(t){ return -(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t)); }
+  var sc = Math.min(W,H)*0.018;
+  for(var i=0; i<total; i++){
+    var ang = (Math.PI*2/total)*i;
+    words.push({
+      tx: W/2 + hx(ang)*sc, ty: H/2 + hy(ang)*sc - 15,
+      x: W/2, y: H + 50, alpha:0, born:false,
+      delay: i*22, fs: Math.random()*4+8
+    });
+  }
+  var start = Date.now();
+  anim3Running = true;
+  function animate3(){
+    if(!anim3Running) return;
+    var elapsed = Date.now() - start;
+    ctx.clearRect(0,0,W,H);
+    var pulse = 1 + Math.sin(elapsed*0.002)*0.045;
+    var blur = 0.6 + Math.sin(elapsed*0.0015)*0.4;
+    var cx = W/2, cy = H/2 - 15;
+    for(var i=0;i<words.length;i++){
+      var w = words[i];
+      if(elapsed < w.delay) continue;
+      if(!w.born) w.born = true;
+      var prog = Math.min((elapsed - w.delay)/2200, 1);
+      var ease = 1 - Math.pow(1-prog,3);
+      w.x = W/2 + (w.tx - W/2)*ease;
+      w.y = (H+50) + (w.ty - (H+50))*ease;
+      w.alpha = ease;
+      var dx = w.x - cx, dy = w.y - cy;
+      var px = cx + dx*pulse;
+      var py = cy + dy*pulse;
+      var a = w.alpha * blur;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, a);
+      ctx.font = w.fs+'px "Cormorant Garamond",serif';
+      ctx.fillStyle = 'rgba(150,200,255,'+a+')';
+      ctx.fillText('i love you', px, py);
+      ctx.restore();
+    }
+    requestAnimationFrame(animate3);
+  }
+  animate3();
+}
+
+document.getElementById('clickName').addEventListener('click', function(){
+  var fl = document.getElementById('flash');
+  fl.classList.add('on');
+  setTimeout(function(){
+    anim3Running = false;
+    go('page4');
+    setTimeout(function(){ fl.classList.remove('on'); }, 300);
+  }, 350);
+});
+
+/* ============ CURTAIN ============ */
+document.getElementById('btnCurtain').addEventListener('click', function(){
+  var ct = document.getElementById('curtain');
+  ct.classList.remove('open');
+  ct.classList.add('show');
+  setTimeout(function(){
+    ct.classList.add('open');
+    setTimeout(function(){
+      go('page5');
+      runPage5();
+      makeLights('lr5', 22);
+      makeLights('lr6', 16);
+      makeLights('lr7', 16);
+      makeLights('lr8', 16);
+      makeLights('lr9', 16);
+      setTimeout(function(){
+        ct.classList.remove('show','open');
+      }, 800);
+    }, 1300);
+  }, 30);
+});
+
+/* ============ PAGE 5 STARS ============ */
+var anim5Running = false;
+function runPage5(){
+  var c = document.getElementById('cvs5');
+  var ctx = c.getContext('2d');
+  c.width = window.innerWidth; c.height = window.innerHeight;
+  var stars = [];
+  for(var i=0;i<90;i++){
+    stars.push({
+      x: Math.random()*c.width, y: Math.random()*c.height*0.55,
+      r: Math.random()*1.8+0.4, spd: Math.random()*0.6+0.2,
+      off: Math.random()*Math.PI*2
+    });
+  }
+  anim5Running = true;
+  function anim(){
+    if(!anim5Running) return;
+    ctx.clearRect(0,0,c.width,c.height);
+    var t = Date.now()*0.001;
+    for(var i=0;i<stars.length;i++){
+      var s = stars[i];
+      var fl = 0.25 + Math.sin(t*s.spd+s.off)*0.75;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,'+fl+')'; ctx.fill();
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r*3, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,'+(fl*0.08)+')'; ctx.fill();
+    }
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+
+function makeLights(id, n){
+  var el = document.getElementById(id);
+  if(!el || el.childNodes.length > 0) return;
+  for(var i=0;i<n;i++){
+    var d = document.createElement('div');
+    d.className = 'light-dot';
+    d.style.animationDelay = (Math.random()*2)+'s';
+    el.appendChild(d);
+  }
+}
+
+/* ============ NAV ============ */
+document.getElementById('btnStart').addEventListener('click', function(){ go('page6'); });
+document.getElementById('btnP6').addEventListener('click', function(){ go('page7'); });
+document.getElementById('btnP7').addEventListener('click', function(){ go('page8'); });
+document.getElementById('btnP8').addEventListener('click', function(){ go('page9'); runPage9(); });
+document.getElementById('btnBouquet').addEventListener('click', function(){ go('page10'); });
+document.getElementById('btnRestart1').addEventListener('click', restart);
+document.getElementById('btnBack').addEventListener('click', restart);
+
+function restart(){
+  anim3Running = false;
+  anim5Running = false;
+  anim9Running = false;
+  clearPage2Timeout();
+  go('page1');
+  setTimeout(startLoading, 400);
+}
+
+/* ============ PAGE 9 FALLING PETALS ============ */
+var anim9Running = false;
+function runPage9(){
+  var c = document.getElementById('cvs9');
+  var ctx = c.getContext('2d');
+  c.width = window.innerWidth; c.height = window.innerHeight;
+  var W = c.width, H = c.height;
+  var petals = [];
+  for(var i=0;i<45;i++){
+    petals.push({
+      x: Math.random()*W, y: -Math.random()*H,
+      sz: Math.random()*7+3, spd: Math.random()*1.5+0.6,
+      drift: Math.random()*2-1, rot: Math.random()*Math.PI*2,
+      rotSpd: (Math.random()-0.5)*0.04,
+      alpha: Math.random()*0.45+0.25,
+      color: ['#ffb6c1','#ff69b4','#ff80ab','#f48fb1','#fff'][Math.floor(Math.random()*5)]
+    });
+  }
+  anim9Running = true;
+  function anim(){
+    if(!anim9Running) return;
+    ctx.clearRect(0,0,W,H);
+    var t = Date.now()*0.001;
+    for(var i=0;i<petals.length;i++){
+      var p = petals[i];
+      p.y += p.spd;
+      p.x += Math.sin(t + p.drift)*0.6;
+      p.rot += p.rotSpd;
+      if(p.y > H+20){ p.y = -15; p.x = Math.random()*W; }
+      ctx.save();
+      ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.globalAlpha = p.alpha;
+      ctx.beginPath();
+      ctx.ellipse(0,0,p.sz,p.sz*1.6,0,0,Math.PI*2);
+      ctx.fillStyle = p.color; ctx.fill();
+      ctx.restore();
+    }
+    requestAnimationFrame(anim);
+  }
+  anim();
+}
+
+window.addEventListener('resize', function(){
+  var ids = ['cvs3','cvs5','cvs9'];
+  for(var i=0;i<ids.length;i++){
+    var el = document.getElementById(ids[i]);
+    if(el){ el.width = window.innerWidth; el.height = window.innerHeight; }
+  }
+});
+</script>
+</body>
+</html>
